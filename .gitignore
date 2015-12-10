@@ -1,0 +1,26 @@
+*.pyc
+*.sqlite
+
+*.gem
+
+# vim swap files
+.*.swp
+
+# services' runtime files
+*.log
+*.pid
+
+# Vagrant housekeeping file
+/.vagrant
+
+/build
+/local_mirror
+/virtualbox/iso/*.iso
+nosetests.xml
+nailgun.log
+lock
+/kvm/iso/*.iso
+.idea
+.DS_Store
+
+Nailgun.egg-info
