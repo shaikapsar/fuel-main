@@ -52,6 +52,7 @@ wait_for_product_vm_to_install() {
 
     # Loop until master node gets successfully installed
     while ! is_product_vm_operational $ip $username $password "$prompt"; do
-        sleep 5
+       echo "Waiting for product VM to install. VM still not operation..." 
+       sleep 60
     done
 }

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo $(Date)
 # Prepare the host system
 ./actions/prepare-environment.sh || exit 1
 

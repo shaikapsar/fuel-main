@@ -1,5 +1,5 @@
 In order to successfully run Mirantis OpenStack under KVM, you need to:
-
+wget http://seed-us1.fuel-infra.org/fuelweb-community-release/fuel-community-7.0.iso
 *   download the official release (.iso) and place it under 'iso' directory
 *   run ``sudo ./launch.sh``.it will automatically pick up the iso, and will spin up master node and
 slave nodes

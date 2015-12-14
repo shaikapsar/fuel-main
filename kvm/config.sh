@@ -4,7 +4,7 @@
 #   - for minimal non-HA installation, specify 2 (1 controller + 1 compute)
 #   - for minimal non-HA with Cinder installation, specify 3 (1 ctrl + 1 compute + 1 cinder)
 #   - for minimal HA installation, specify 4 (3 controllers + 1 compute)
-cluster_size=2
+cluster_size=6
 
 # Get the first available ISO from the directory 'iso'
 #iso_path=`ls -1 $(pwd)/iso/*.iso 2>/dev/null | head -1`
@@ -17,7 +17,7 @@ env_name_prefix=fuel-
 #Use bridge interface: 0 - false, 1 - true. It can be useful for Public access.
 use_bridge=0
 #Bridge name (if use_bridge=1)
-br_name="br_trunk"
+br_name="br0"
 
 #networks definition: id, list of host IP's for ech network. The first network will be used for provisioning
 idx=400
@@ -33,8 +33,8 @@ for ip in 192.168.202.1; do
 done
 
 # Master node settings
-vm_master_cpu_cores=4
-vm_master_memory_mb=10240
+vm_master_cpu_cores=2
+vm_master_memory_mb=16384
 #vm_master_disk_mb=35840
 vm_master_disk_mb=65535
 
@@ -48,21 +48,23 @@ vm_master_password=r00tme
 vm_master_prompt='root@fuelweb ~]#'
 
 # Slave node settings
-vm_slave_cpu_cores=1
+vm_slave_cpu_cores=4
 
 # This section allows you to define RAM size in MB for each slave node.
 # Keep in mind that PXE boot might not work correctly with values lower than 768.
 # You can specify memory size for the specific slaves, other will get default vm_slave_memory_default
-vm_slave_memory_default=1024
-vm_slave_memory_mb[1]=5120   # for controller node 768 MB should be sufficient
-vm_slave_memory_mb[2]=5120   # for compute node 1GB is recommended, otherwise VM instances in OpenStack may not boot
-vm_slave_memory_mb[3]=5120   # for a dedicated Cinder node 768 MB should be sufficient
+vm_slave_memory_default=16384
+#vm_slave_memory_mb[1]=5120   # for controller node 768 MB should be sufficient
+#vm_slave_memory_mb[2]=5120   # for compute node 1GB is recommended, otherwise VM instances in OpenStack may not boot
+#vm_slave_memory_mb[3]=5120   # for a dedicated Cinder node 768 MB should be sufficient
+#vm_slave_memory_mb[4]=5120   # for compute another node 1GB is recommended, otherwise VM instances in OpenStack may not boot
 
 # This section allows you to define HDD size in MB for all the slaves nodes.
 # All the slaves will have identical disk configuration. Each slave will have three disks of the following sizes.
 vm_slave_first_disk_mb=35840
 vm_slave_second_disk_mb=35840
 vm_slave_third_disk_mb=35840
+#vm_slave_fourth_disk_mb=35840
 
 # This section allows you to define additional packages that will be installed on your host system for PXE boot
 #package_list="tftp-hpa tftpd-hpa isc-dhcp-server syslinux syslinux-common nfs-server"
